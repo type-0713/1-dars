@@ -1,0 +1,113 @@
+/* src/index.css - Professional EdTech Style with CSS 3D Transforms */
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .perspective-1500 {
+    perspective: 1500px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* 3D Visualizer Layers */
+.card-3d-root {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.layer-3d {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+.layer-3d:hover {
+  transform: translateZ(28px) rotateX(4deg) rotateY(-4deg);
+}
+
+.layer-step-1 { transform: translateZ(10px); }
+.layer-step-2 { transform: translateZ(25px); }
+.layer-step-3 { transform: translateZ(40px); }
+.layer-step-4 { transform: translateZ(55px); }
+.layer-step-5 { transform: translateZ(70px); }
+
+/* Floating subtle animation */
+@keyframes subtleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotateX(6deg) rotateY(-8deg);
+  }
+  50% {
+    transform: translateY(-8px) rotateX(4deg) rotateY(-5deg);
+  }
+}
+
+.animate-subtle-float {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+/* Light Theme Shadows & Borders */
+.premium-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+}
+
+.card-interactive-depth {
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-interactive-depth:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 20px -4px rgba(37, 99, 235, 0.12);
+}
+
+/* Code Editor Styling */
+.code-editor-line {
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar for code and preview */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-subtle-float {
+    animation: none !important;
+  }
+}
